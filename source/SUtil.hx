@@ -13,6 +13,7 @@ import haxe.CallStack.StackItem;
 import haxe.CallStack;
 import haxe.io.Path;
 import lime.app.Application;
+import lime.system.System;
 import openfl.Lib;
 import openfl.events.UncaughtErrorEvent;
 import openfl.utils.Assets;
@@ -115,6 +116,8 @@ class SUtil
 	{
 		#if android
 		return Environment.getExternalStorageDirectory() + '/' + '.' + Application.current.meta.get('file') + '/';
+		#elseif ios 
+		System.documentsDirectory;
 		#else
 		return '';
 		#end
@@ -204,4 +207,5 @@ class SUtil
 		Hardware.toast("Error!\nClouldn't copy the file because:\n" + e, ToastType.LENGTH_LONG);
 		#end
 	}
+
 }
